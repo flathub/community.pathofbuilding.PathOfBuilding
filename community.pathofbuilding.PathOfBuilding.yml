@@ -57,9 +57,9 @@ modules:
       - install -Dm755 pobfrontend $FLATPAK_DEST/pathofbuilding
     sources:
       - type: git
-        url: https://gitlab.com/bcareil/pobfrontend.git
+        url: https://github.com/ernstp/pobfrontend.git
         branch: luajit
-        commit: 29feacd42e1f11274bad66514e6ad1a8d732ec21
+        commit: 5fa9fb714bf29f38436dd0164227f8622a94925c
 
   - name: start-script
     buildsystem: simple
