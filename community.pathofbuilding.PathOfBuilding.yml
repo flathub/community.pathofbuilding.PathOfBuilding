@@ -1,6 +1,6 @@
 app-id: community.pathofbuilding.PathOfBuilding
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 command: pathofbuilding
 finish-args:
@@ -10,7 +10,7 @@ finish-args:
   - --share=network
   - --device=dri
 cleanup:
-  - '/include'
+  - /include
 
 modules:
   - name: PathOfBuildingCommunity
@@ -23,11 +23,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/PathOfBuildingCommunity/PathOfBuilding.git
-        tag: v2.13.0
-        commit: d600d809c6ef3b5df0e604c2626d088135fa9867
+        tag: v2.14.0
+        commit: 2019dd74e6802087f3b2acf96a35b7883d038220
         x-checker-data:
           type: git
-          tag-pattern: "^v([\\d.]+)$"
+          tag-pattern: ^v([\d.]+)$
       - type: patch
         path: PathOfBuilding-force-disable-devmode.patch
 
