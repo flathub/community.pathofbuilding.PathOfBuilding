@@ -28,6 +28,7 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
+          is-main-source: true
       - type: patch
         path: PathOfBuilding-force-disable-devmode.patch
 
