@@ -28,6 +28,7 @@ modules:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
+        tag: v2.15.0
       - type: patch
         path: PathOfBuilding-force-disable-devmode.patch
 
