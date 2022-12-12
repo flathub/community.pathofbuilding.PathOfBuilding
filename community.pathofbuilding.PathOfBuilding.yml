@@ -1,6 +1,6 @@
 app-id: community.pathofbuilding.PathOfBuilding
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: "6.4"
 sdk: org.kde.Sdk
 command: pathofbuilding
 finish-args:
@@ -67,9 +67,9 @@ modules:
       - install -Dm755 pobfrontend $FLATPAK_DEST/pathofbuilding
     sources:
       - type: git
-        url: https://gitlab.com/bcareil/pobfrontend.git
-        branch: luajit
-        commit: 29feacd42e1f11274bad66514e6ad1a8d732ec21
+        url: https://github.com/ernstp/pobfrontend.git
+        branch: qt6
+        commit: 7821222df1e4d8a0173a467ba2877366cec3e2cc
 
   - name: start-script
     buildsystem: simple
