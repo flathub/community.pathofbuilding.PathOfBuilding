@@ -69,7 +69,7 @@ modules:
       - type: git
         url: https://github.com/ernstp/pobfrontend.git
         branch: qt6
-        commit: 7821222df1e4d8a0173a467ba2877366cec3e2cc
+        commit: 9faa19aa362f975737169824c1578d5011487c18
 
   - name: start-script
     buildsystem: simple
