@@ -1,6 +1,6 @@
 app-id: community.pathofbuilding.PathOfBuilding
 runtime: org.kde.Platform
-runtime-version: '6.4'
+runtime-version: '6.6'
 sdk: org.kde.Sdk
 command: pathofbuilding
 finish-args:
