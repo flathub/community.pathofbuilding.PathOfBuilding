@@ -23,12 +23,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/PathOfBuildingCommunity/PathOfBuilding.git
-        commit: 2b85051d785c2aa8359051289094f9ede4a497d0
+        commit: 6e7b8698205d3ddd26b714b6134d96d52e1bf894
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v2.36.1
+        tag: v2.37.0
       - type: patch
         path: PathOfBuilding-force-disable-devmode.patch
 
