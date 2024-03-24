@@ -21,6 +21,9 @@
   <url type="homepage">https://pathofbuilding.community/</url>
   <url type="bugtracker">https://github.com/PathOfBuildingCommunity/PathOfBuilding/issues</url>
   <content_rating type="oars-1.1"/>
+  <developer id="community.pathofbuilding">
+    <name>Path of Building Community</name>
+  </developer>
   <releases>
       <release version="2.39.3" date="2024-01-26"/>
       <release version="2.39.2" date="2024-01-25"/>
