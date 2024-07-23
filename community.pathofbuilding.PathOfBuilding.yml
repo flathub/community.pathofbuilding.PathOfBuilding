@@ -23,39 +23,50 @@ modules:
     sources:
       - type: git
         url: https://github.com/PathOfBuildingCommunity/PathOfBuilding.git
-        commit: de99984a644a64a8cbfe5d16f27d6adfec73a142
+        commit: 047cfe3fc3d146d548ca4b2e1161e2f6ee7d37b3
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v2.42.0
+        tag: v2.44.1
       - type: patch
         path: PathOfBuilding-force-disable-devmode.patch
 
   - name: luajit
     buildsystem: simple
     build-commands:
-      - make PREFIX=${FLATPAK_DEST} install -j$FLATPAK_BUILDER_N_JOBS
+      - make PREFIX=/app install -j$FLATPAK_BUILDER_N_JOBS
+    sources:
+      - type: git
+        url: https://github.com/LuaJIT/LuaJIT.git
+        commit: 04dca7911ea255f37be799c18d74c305b921c1a6
+
+  - name: luarocks
+    buildsystem: simple
+    build-commands:
+      - ./configure --prefix=/app --lua-version=5.1
+      - make
+      - make install
     sources:
       - type: archive
-        url: http://luajit.org/download/LuaJIT-2.1.0-beta3.tar.gz
-        sha256: 1ad2e34b111c802f9d0cdf019e986909123237a28c746b21295b63c9e785d9c3
+        url: https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+        sha256: c3fb3d960dffb2b2fe9de7e3cb004dc4d0b34bb3d342578af84f84325c669102
 
   - name: dkjson
     buildsystem: simple
     build-commands:
-      - install -Dm644 dkjson.lua ${FLATPAK_DEST}/pathofbuilding
+      - luarocks build dkjson-2.8-1.src.rock
     sources:
       - type: file
-        url: http://dkolf.de/src/dkjson-lua.fsl/raw/dkjson.lua?name=6c6486a4a589ed9ae70654a2821e956650299228
-        sha256: bdb71dbe2863e9567d5a9a926faed1cfc4c12e04741a3e9009d334df25b9748c
+        url: https://luarocks.org/manifests/dhkolf/dkjson-2.8-1.src.rock
+        sha256: 3d8de09cd43a60a005ac769ee1cedc515952c892d63cba9ac925ed02afc98091
 
   - name: Lua-cURLv3
     buildsystem: simple
     build-commands:
-      - make DESTDIR=${FLATPAK_DEST} LUA_IMPL=luajit -j$FLATPAK_BUILDER_N_JOBS
+      - make DESTDIR=/app LUA_IMPL=luajit -j$FLATPAK_BUILDER_N_JOBS
     post-install:
-      - cp lcurl.so $FLATPAK_DEST/pathofbuilding
+      - cp lcurl.so /app/pathofbuilding
     sources:
       - type: archive
         url: https://github.com/Lua-cURL/Lua-cURLv3/archive/refs/tags/v0.3.13.tar.gz
@@ -64,17 +75,16 @@ modules:
   - name: pobfrontend
     buildsystem: meson
     post-install:
-      - install -Dm755 pobfrontend $FLATPAK_DEST/pathofbuilding
+      - install -Dm755 pobfrontend /app/pathofbuilding
     sources:
       - type: git
         url: https://github.com/ernstp/pobfrontend.git
-        branch: qt6
         commit: 9faa19aa362f975737169824c1578d5011487c18
 
   - name: start-script
     buildsystem: simple
     build-commands:
-      - install -Dm755 pathofbuilding.sh ${FLATPAK_DEST}/bin/pathofbuilding
+      - install -Dm755 pathofbuilding.sh /app/bin/pathofbuilding
     sources:
       - type: script
         dest-filename: pathofbuilding.sh
@@ -85,9 +95,9 @@ modules:
   - name: extrafiles
     buildsystem: simple
     build-commands:
-      - install -Dm644 community.pathofbuilding.PathOfBuilding.png ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/community.pathofbuilding.PathOfBuilding.png
-      - install -Dm644 community.pathofbuilding.PathOfBuilding.desktop ${FLATPAK_DEST}/share/applications/community.pathofbuilding.PathOfBuilding.desktop
-      - install -Dm644 community.pathofbuilding.PathOfBuilding.metainfo.xml ${FLATPAK_DEST}/share/metainfo/community.pathofbuilding.PathOfBuilding.metainfo.xml
+      - install -Dm644 community.pathofbuilding.PathOfBuilding.png /app/share/icons/hicolor/scalable/apps/community.pathofbuilding.PathOfBuilding.png
+      - install -Dm644 community.pathofbuilding.PathOfBuilding.desktop /app/share/applications/community.pathofbuilding.PathOfBuilding.desktop
+      - install -Dm644 community.pathofbuilding.PathOfBuilding.metainfo.xml /app/share/metainfo/community.pathofbuilding.PathOfBuilding.metainfo.xml
     sources:
       - type: file
         path: community.pathofbuilding.PathOfBuilding.png
