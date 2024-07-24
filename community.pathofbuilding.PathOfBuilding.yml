@@ -95,7 +95,7 @@ modules:
   - name: extrafiles
     buildsystem: simple
     build-commands:
-      - install -Dm644 community.pathofbuilding.PathOfBuilding.png /app/share/icons/hicolor/scalable/apps/community.pathofbuilding.PathOfBuilding.png
+      - install -Dm644 community.pathofbuilding.PathOfBuilding.png /app/share/icons/hicolor/256x256/apps/community.pathofbuilding.PathOfBuilding.png
       - install -Dm644 community.pathofbuilding.PathOfBuilding.desktop /app/share/applications/community.pathofbuilding.PathOfBuilding.desktop
       - install -Dm644 community.pathofbuilding.PathOfBuilding.metainfo.xml /app/share/metainfo/community.pathofbuilding.PathOfBuilding.metainfo.xml
     sources:
