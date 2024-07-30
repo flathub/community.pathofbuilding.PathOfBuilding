@@ -25,8 +25,11 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
-      <release version="2.47.2" date="2024-07-29">
+      <release version="2.47.3" date="2024-07-30">
          <description></description>
+      </release>
+      <release version="2.47.2" date="2024-07-29">
+         <description/>
       </release>
       <release version="2.46.0" date="2024-07-25">
          <description/>
