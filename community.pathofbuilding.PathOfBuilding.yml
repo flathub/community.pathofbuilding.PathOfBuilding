@@ -61,6 +61,15 @@ modules:
         url: https://luarocks.org/manifests/dhkolf/dkjson-2.8-1.src.rock
         sha256: 3d8de09cd43a60a005ac769ee1cedc515952c892d63cba9ac925ed02afc98091
 
+  - name: lua-utf8
+    buildsystem: simple
+    build-commands:
+      - luarocks build luautf8-0.1.6-1.src.rock
+    sources:
+      - type: file
+        url: https://luarocks.org/manifests/xavier-wang/luautf8-0.1.6-1.src.rock
+        sha256: 37901bc127c4afe9f611bba58af7b12eda6599fc270e1706e2f767807dfacd82
+
   - name: Lua-cURLv3
     buildsystem: simple
     build-commands:
