@@ -88,7 +88,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ernstp/pobfrontend.git
-        commit: 601b9e1a7d47b1ce3bb1c3b41bb0c7e277442c5b
+        commit: ccb3ad3f494713c2dde38053e0418d04c939e40a
 
   - name: start-script
     buildsystem: simple
