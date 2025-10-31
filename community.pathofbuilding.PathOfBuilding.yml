@@ -1,8 +1,12 @@
 app-id: community.pathofbuilding.PathOfBuilding
-runtime: org.kde.Platform
-runtime-version: '6.9'
-sdk: org.kde.Sdk
-command: pathofbuilding
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+command: rusty-path-of-building
 finish-args:
   - --socket=fallback-x11
   - --socket=wayland
@@ -13,25 +17,6 @@ cleanup:
   - /include
 
 modules:
-  - name: PathOfBuildingCommunity
-    buildsystem: simple
-    build-commands:
-      - unzip runtime-win32.zip lua/xml.lua lua/base64.lua lua/sha1.lua
-      - mv lua/*.lua .
-      - rm -rf lua runtime-win32.zip runtime/*.dll runtime/*.exe
-      - cp -r $FLATPAK_BUILDER_BUILDDIR/. $FLATPAK_DEST/pathofbuilding
-    sources:
-      - type: git
-        url: https://github.com/PathOfBuildingCommunity/PathOfBuilding.git
-        commit: d7402e2154775df64c1dec37f7fdfd129a0189c9
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
-          is-main-source: true
-        tag: v2.57.0
-      - type: patch
-        path: PathOfBuilding-force-disable-devmode.patch
-
   - name: luajit
     buildsystem: simple
     build-commands:
@@ -40,6 +25,20 @@ modules:
       - type: git
         url: https://github.com/LuaJIT/LuaJIT.git
         commit: 04dca7911ea255f37be799c18d74c305b921c1a6
+
+  - name: rusty-path-of-building
+    buildsystem: simple
+    build-commands:
+      - install -Dm0644 cargo/config .cargo/config.toml
+      - cd lua/libs/lzip; make DESTDIR=/app LUA_CMOD=/lib/lua/5.1 LUA_IMPL=luajit install
+      - cargo --offline fetch --manifest-path Cargo.toml --verbose
+      - cargo --offline build --release
+      - install -Dm755 target/release/rusty-path-of-building /app/bin/rusty-path-of-building
+    sources:
+      - type: git
+        url: https://github.com/meehl/rusty-path-of-building.git
+        commit: 54b454f8b971f9213cb1ae7e99db141a04c2dd4b
+      - cargo-sources.json
 
   - name: luarocks
     buildsystem: simple
@@ -73,44 +72,25 @@ modules:
   - name: Lua-cURLv3
     buildsystem: simple
     build-commands:
-      - make DESTDIR=/app LUA_IMPL=luajit -j$FLATPAK_BUILDER_N_JOBS
-    post-install:
-      - cp lcurl.so /app/pathofbuilding
+      - make DESTDIR=/app LUA_CMOD=/lib/lua/5.1 LUA_IMPL=luajit -j$FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: archive
         url: https://github.com/Lua-cURL/Lua-cURLv3/archive/refs/tags/v0.3.13.tar.gz
         sha256: aba40511a7cac4422c0238d1db42b2124ea5a727b0745f7f434f3dc119cbb2db
 
-  - name: pobfrontend
-    buildsystem: meson
-    post-install:
-      - install -Dm755 pobfrontend /app/pathofbuilding
-    sources:
-      - type: git
-        url: https://github.com/ernstp/pobfrontend.git
-        commit: 7e09fdc29d1e72e9122db71e41ba03fd54bf428b
-
-  - name: start-script
-    buildsystem: simple
-    build-commands:
-      - install -Dm755 pathofbuilding.sh /app/bin/pathofbuilding
-    sources:
-      - type: script
-        dest-filename: pathofbuilding.sh
-        commands:
-          - cd /app/pathofbuilding/
-          - /app/pathofbuilding/pobfrontend "$@"
-
   - name: extrafiles
     buildsystem: simple
     build-commands:
       - install -Dm644 community.pathofbuilding.PathOfBuilding.png /app/share/icons/hicolor/256x256/apps/community.pathofbuilding.PathOfBuilding.png
-      - install -Dm644 community.pathofbuilding.PathOfBuilding.desktop /app/share/applications/community.pathofbuilding.PathOfBuilding.desktop
+      - install -Dm644 community.pathofbuilding.PathOfBuilding.Poe1.desktop /app/share/applications/community.pathofbuilding.PathOfBuilding.Poe1.desktop
+      - install -Dm644 community.pathofbuilding.PathOfBuilding.Poe2.desktop /app/share/applications/community.pathofbuilding.PathOfBuilding.Poe2.desktop
       - install -Dm644 community.pathofbuilding.PathOfBuilding.metainfo.xml /app/share/metainfo/community.pathofbuilding.PathOfBuilding.metainfo.xml
     sources:
       - type: file
         path: community.pathofbuilding.PathOfBuilding.png
       - type: file
-        path: community.pathofbuilding.PathOfBuilding.desktop
+        path: community.pathofbuilding.PathOfBuilding.Poe1.desktop
+      - type: file
+        path: community.pathofbuilding.PathOfBuilding.Poe2.desktop
       - type: file
         path: community.pathofbuilding.PathOfBuilding.metainfo.xml

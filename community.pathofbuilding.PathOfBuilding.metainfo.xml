@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>community.pathofbuilding.PathOfBuilding</id>
-  <launchable type="desktop-id">community.pathofbuilding.PathOfBuilding.desktop</launchable>
+  <launchable type="desktop-id">community.pathofbuilding.PathOfBuilding.Poe1.desktop</launchable>
+  <launchable type="desktop-id">community.pathofbuilding.PathOfBuilding.Poe2.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
-  <name>Path of Building  (Community)</name>
+  <name>Path of Building (Community)</name>
   <summary>Path of Building (Community) - A powerful build planner for Path of Exile</summary>
   <description>
     <p>
       Path of Building Community Fork - A powerful build planner for Path of Exile
 
       This is a fork of Openarl's Path Of Building that includes many extra features not in the base version of PoB
+
+      It's running on Linux through replacing SimpleGraphics with https://github.com/meehl/rusty-path-of-building
     </p>
   </description>
   <screenshots>
@@ -25,134 +28,8 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
-      <release version="2.57.0" date="2025-10-31">
+      <release version="0.2.6" date="2025-10-31">
          <description></description>
-      </release>
-      <release version="2.56.0" date="2025-08-11">
-         <description/>
-      </release>
-      <release version="2.55.5" date="2025-07-18">
-         <description/>
-      </release>
-      <release version="2.55.4" date="2025-07-15">
-         <description/>
-      </release>
-      <release version="2.55.3" date="2025-07-02">
-         <description/>
-      </release>
-      <release version="2.55.2" date="2025-07-01">
-         <description/>
-      </release>
-      <release version="2.55.1" date="2025-06-30">
-         <description/>
-      </release>
-      <release version="2.55.0" date="2025-06-29">
-         <description/>
-      </release>
-      <release version="2.54.0" date="2025-06-14">
-         <description/>
-      </release>
-      <release version="2.53.1" date="2025-06-13">
-         <description/>
-      </release>
-      <release version="2.53.0" date="2025-06-13">
-         <description/>
-      </release>
-      <release version="2.52.3" date="2025-02-21">
-         <description/>
-      </release>
-      <release version="2.52.1" date="2025-02-20">
-         <description/>
-      </release>
-      <release version="2.51.0" date="2025-02-14">
-         <description/>
-      </release>
-      <release version="2.50.0" date="2025-02-13">
-         <description/>
-      </release>
-      <release version="2.49.3" date="2024-11-25">
-         <description/>
-      </release>
-      <release version="2.49.2" date="2024-11-19">
-         <description/>
-      </release>
-      <release version="2.49.1" date="2024-11-18">
-         <description/>
-      </release>
-      <release version="2.49.0" date="2024-11-18">
-         <description/>
-      </release>
-      <release version="2.48.2" date="2024-08-19">
-         <description/>
-      </release>
-      <release version="2.48.1" date="2024-08-15">
-         <description/>
-      </release>
-      <release version="2.47.3" date="2024-07-30">
-         <description/>
-      </release>
-      <release version="2.47.2" date="2024-07-29">
-         <description/>
-      </release>
-      <release version="2.46.0" date="2024-07-25">
-         <description/>
-      </release>
-      <release version="2.45.0" date="2024-07-24">
-         <description/>
-      </release>
-      <release version="2.44.1" date="2024-07-23"/>
-      <release version="2.42.0" date="2024-03-30"/>
-      <release version="2.41.0" date="2024-03-25"/>
-      <release version="2.40.1" date="2024-03-24"/>
-      <release version="2.39.3" date="2024-01-26"/>
-      <release version="2.39.2" date="2024-01-25"/>
-      <release version="2.39.0" date="2024-01-24"/>
-      <release version="2.38.4" date="2023-12-20"/>
-      <release version="2.38.2" date="2023-12-18"/>
-      <release version="2.37.0" date="2023-12-13"/>
-      <release version="2.36.1" date="2023-12-12"/>
-      <release version="2.36.0" date="2023-12-11"/>
-      <release version="2.35.5" date="2023-12-06"/>
-      <release version="2.35.4" date="2023-12-06"/>
-      <release version="2.35.3" date="2023-12-06"/>
-      <release version="2.35.2" date="2023-12-06"/>
-      <release version="2.35.0" date="2023-12-05"/>
-      <release version="2.34.1" date="2023-09-16"/>
-      <release version="2.34.0" date="2023-09-13"/>
-      <release version="2.33.5" date="2023-08-29"/>
-      <release version="2.33.3" date="2023-08-26"/>
-      <release version="2.33.1" date="2023-08-25"/>
-      <release version="2.32.2" date="2023-08-24"/>
-      <release version="2.31.2" date="2023-08-16"/>
-      <release version="2.31.0" date="2023-08-14"/>
-      <release version="2.30.1" date="2023-05-05"/>
-      <release version="2.29.0" date="2023-04-28"/>
-      <release version="2.28.0" date="2023-04-12"/>
-      <release version="2.27.2" date="2023-04-09"/>
-      <release version="2.27.0" date="2023-04-08"/>
-      <release version="2.26.3" date="2023-04-04"/>
-      <release version="2.26.2" date="2023-04-03"/>
-      <release version="2.26.1" date="2023-04-03"/>
-      <release version="2.25.1" date="2023-01-06"/>
-      <release version="2.25.0" date="2023-01-03"/>
-      <release version="2.24.0" date="2022-12-14"/>
-      <release version="2.23.0" date="2022-12-10"/>
-      <release version="2.22.1" date="2022-12-09"/>
-      <release version="2.22.0" date="2022-12-09"/>
-      <release version="2.21.1" date="2022-08-20"/>
-      <release version="2.20.2" date="2022-08-17"/>
-      <release version="2.20.1" date="2022-08-15"/>
-      <release version="2.20.0" date="2022-08-15"/>
-      <release version="2.19.2" date="2022-07-15"/>
-      <release version="2.19.1" date="2022-07-13"/>
-      <release version="2.18.1" date="2022-06-06"/>
-      <release version="2.17.2" date="2022-05-21"/>
-      <release version="2.17.1" date="2022-05-17"/>
-      <release version="2.16.0" date="2022-03-15"/>
-      <release version="2.15.1" date="2022-02-12"/>
-      <release version="2.15.0" date="2022-02-12"/>
-      <release version="2.14.0" date="2022-02-05"/>
-      <release version="2.13.0" date="2021-11-01">
       </release>
   </releases>
 </component>

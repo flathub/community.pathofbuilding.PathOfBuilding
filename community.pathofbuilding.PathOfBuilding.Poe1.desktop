@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=Path of Building (Community)
-Comment=Offline build planner for Path of Exile
-Exec=pathofbuilding %U
+Name=Path of Building PoE 1
+Comment=Offline build planner for Path of Exile 1
+Exec=rusty-path-of-building poe1 %U
 Terminal=false
 Type=Application
 Icon=community.pathofbuilding.PathOfBuilding
 Categories=Game;Utility;
-Keywords=poe;pob;pobc;path;exile;
+Keywords=poe;pob;pob1;pobc;path;exile;
 MimeType=x-scheme-handler/pob;
 StartupWMClass=pobfrontend
