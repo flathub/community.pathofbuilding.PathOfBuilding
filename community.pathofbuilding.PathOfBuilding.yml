@@ -8,7 +8,9 @@ build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
 command: rusty-path-of-building
 finish-args:
-  - --socket=fallback-x11
+  # This should be fallback-x11, but on gnome/mutter, zwlr_data_control_manager_v1 is not implemented
+  # so we need to use x11 as a fallback to make copy paste work
+  - --socket=x11
   - --socket=wayland
   - --share=ipc
   - --share=network
