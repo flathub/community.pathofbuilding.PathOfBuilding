@@ -8,4 +8,4 @@ Icon=community.pathofbuilding.PathOfBuilding
 Categories=Game;Utility;
 Keywords=poe;pob;pob1;pobc;path;exile;
 MimeType=x-scheme-handler/pob;
-StartupWMClass=pobfrontend
+StartupWMClass=rusty-path-of-building-1
