@@ -28,6 +28,13 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
+    <release version="0.2.7" date="2025-11-02">
+      <description>
+        <p>Add missing window icon</p>
+        <p>Fix missing window title during installation step</p>
+        <p>Fix UI scaling factor not being applied at startup on X11</p>
+      </description>
+    </release>
     <release version="0.2.6" date="2025-10-31">
       <description>
         <p>Internal change to rusty-path-of-building!</p>
