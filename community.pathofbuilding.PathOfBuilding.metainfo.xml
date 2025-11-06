@@ -28,6 +28,9 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
+    <release version="0.2.7" date="2025-11-06">
+      <description></description>
+    </release>
     <release version="0.2.7" date="2025-11-02">
       <description>
         <p>Add missing window icon</p>
