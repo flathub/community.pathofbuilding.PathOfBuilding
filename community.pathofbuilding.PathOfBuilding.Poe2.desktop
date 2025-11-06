@@ -7,5 +7,5 @@ Type=Application
 Icon=community.pathofbuilding.PathOfBuilding
 Categories=Game;Utility;
 Keywords=poe;pob;pob2;pobc;path;exile;
-MimeType=x-scheme-handler/pob;
+MimeType=x-scheme-handler/pob2;
 StartupWMClass=rusty-path-of-building-2
