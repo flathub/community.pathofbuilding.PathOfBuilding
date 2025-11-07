@@ -28,8 +28,11 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
-    <release version="0.2.7" date="2025-11-06">
-      <description></description>
+    <release version="0.2.8" date="2025-11-07">
+      <description>
+        <p>Replace non-ASCII characters in text input with '?'</p>
+        <p>Use `smithay-clipboard` crate for clipboard support on Wayland</p>
+      </description>
     </release>
     <release version="0.2.7" date="2025-11-02">
       <description>
