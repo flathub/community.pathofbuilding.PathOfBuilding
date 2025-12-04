@@ -28,6 +28,9 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
+    <release version="0.2.9" date="2025-12-04">
+      <description></description>
+    </release>
     <release version="0.2.8" date="2025-11-07">
       <description>
         <p>Replace non-ASCII characters in text input with '?'</p>
