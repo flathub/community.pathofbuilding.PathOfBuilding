@@ -76,6 +76,15 @@ modules:
         url: https://luarocks.org/manifests/xavier-wang/luautf8-0.1.6-1.src.rock
         sha256: 37901bc127c4afe9f611bba58af7b12eda6599fc270e1706e2f767807dfacd82
 
+  - name: Luasocket
+    buildsystem: simple
+    build-commands:
+      - luarocks build luasocket-3.1.0-1.src.rock
+    sources:
+      - type: file
+        url: https://luarocks.org/manifests/lunarmodules/luasocket-3.1.0-1.src.rock
+        sha256: f4a207f50a3f99ad65def8e29c54ac9aac668b216476f7fae3fae92413398ed2
+
   - name: Lua-cURLv3
     buildsystem: simple
     build-commands:
