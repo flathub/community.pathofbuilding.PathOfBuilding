@@ -38,13 +38,13 @@ modules:
     sources:
       - type: git
         url: https://github.com/meehl/rusty-path-of-building.git
-        commit: e2c0f2fffcaf9413f1b8777d9809661506f047ae
+        commit: 716add6d76110d0e3cf3fe2e83e219781c8e0b6a
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
           version-scheme: semantic
-        tag: v0.2.14
+        tag: v0.2.15
       - cargo-sources.json
 
   - name: luarocks
