@@ -1,0 +1,62 @@
+name: Update cargo-sources.json
+
+env:
+  FLATPAK_BUILDER_TOOLS_REPO: https://github.com/flatpak/flatpak-builder-tools.git
+  UPSTREAM_MODULE: rusty-path-of-building
+
+on:
+  pull_request:
+      paths:
+        - "community.pathofbuilding.PathOfBuilding.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    name: Generate cargo-sources.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-toml python3-aiohttp
+
+      # This info is pulled directly from the updated manifest in the PR
+      - name: Get upstream project info
+        run: |
+          FILTER=".modules[] | select(.name == \"$UPSTREAM_MODULE\") | .sources[] | select(.type == \"git\")"
+          echo "UPSTREAM_URL=$(yq "$FILTER | .url" community.pathofbuilding.PathOfBuilding.yml)" >> "$GITHUB_ENV"
+          echo "UPSTREAM_COMMIT=$(yq "$FILTER | .commit" community.pathofbuilding.PathOfBuilding.yml)" >> "$GITHUB_ENV"
+          echo "UPSTREAM_TAG=$(yq "$FILTER | .tag" community.pathofbuilding.PathOfBuilding.yml)" >> "$GITHUB_ENV"
+
+      - name: Fetch upstream Cargo.lock
+        run: |
+          git init -q ci_upstream
+          git -C ci_upstream fetch -q --depth 1 "$UPSTREAM_URL" "$UPSTREAM_COMMIT"
+          git -C ci_upstream show FETCH_HEAD:Cargo.lock > Cargo.lock
+
+      - name: Fetch flatpak-cargo-generator
+        run: git clone --depth 1 $FLATPAK_BUILDER_TOOLS_REPO flatpak-builder-tools
+
+      - name: Regenerate cargo-sources.json
+        run: python3 ./flatpak-builder-tools/cargo/flatpak-cargo-generator.py Cargo.lock -o cargo-sources.json
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet cargo-sources.json; then
+            echo "No changes to cargo-sources.json"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add cargo-sources.json
+          git commit -m "Update cargo-sources.json"
+          git push origin HEAD:${{ github.head_ref }}
