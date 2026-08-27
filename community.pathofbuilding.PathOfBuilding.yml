@@ -38,7 +38,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/meehl/rusty-path-of-building.git
-        commit: 6b6098d3319dd9645532b77dcbca9322cd3966af
+        commit: 8cfc82d668c6558884f10fae88a2cab45b7b7631
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
