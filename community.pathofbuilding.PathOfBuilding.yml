@@ -30,8 +30,6 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm0644 cargo/config .cargo/config.toml
-      - cd lua/libs/lzip; make DESTDIR=/app LUA_CMOD=/lib/lua/5.1 LUA_IMPL=luajit
-        install
       - cargo --offline fetch --manifest-path Cargo.toml --verbose
       - cargo --offline build --release
       - install -Dm755 target/release/rusty-path-of-building /app/bin/rusty-path-of-building
@@ -46,54 +44,6 @@ modules:
           version-scheme: semantic
         tag: v0.3.1
       - cargo-sources.json
-
-  - name: luarocks
-    buildsystem: simple
-    build-commands:
-      - ./configure --prefix=/app --lua-version=5.1
-      - make
-      - make install
-    sources:
-      - type: archive
-        url: https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-        sha256: c3fb3d960dffb2b2fe9de7e3cb004dc4d0b34bb3d342578af84f84325c669102
-
-  - name: dkjson
-    buildsystem: simple
-    build-commands:
-      - luarocks build dkjson-2.8-1.src.rock
-    sources:
-      - type: file
-        url: https://luarocks.org/manifests/dhkolf/dkjson-2.8-1.src.rock
-        sha256: 3d8de09cd43a60a005ac769ee1cedc515952c892d63cba9ac925ed02afc98091
-
-  - name: lua-utf8
-    buildsystem: simple
-    build-commands:
-      - luarocks build luautf8-0.1.6-1.src.rock
-    sources:
-      - type: file
-        url: https://luarocks.org/manifests/xavier-wang/luautf8-0.1.6-1.src.rock
-        sha256: 37901bc127c4afe9f611bba58af7b12eda6599fc270e1706e2f767807dfacd82
-
-  - name: Luasocket
-    buildsystem: simple
-    build-commands:
-      - luarocks build luasocket-3.1.0-1.src.rock
-    sources:
-      - type: file
-        url: https://luarocks.org/manifests/lunarmodules/luasocket-3.1.0-1.src.rock
-        sha256: f4a207f50a3f99ad65def8e29c54ac9aac668b216476f7fae3fae92413398ed2
-
-  - name: Lua-cURLv3
-    buildsystem: simple
-    build-commands:
-      - make DESTDIR=/app LUA_CMOD=/lib/lua/5.1 LUA_IMPL=luajit -j$FLATPAK_BUILDER_N_JOBS
-        install
-    sources:
-      - type: archive
-        url: https://github.com/Lua-cURL/Lua-cURLv3/archive/refs/tags/v0.3.13.tar.gz
-        sha256: aba40511a7cac4422c0238d1db42b2124ea5a727b0745f7f434f3dc119cbb2db
 
   - name: extrafiles
     buildsystem: simple
