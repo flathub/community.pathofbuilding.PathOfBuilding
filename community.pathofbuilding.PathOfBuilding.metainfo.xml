@@ -28,8 +28,12 @@
     <name>Path of Building Community</name>
   </developer>
   <releases>
-    <release version="0.3.3" date="2026-10-23">
+    <release version="0.3.4" date="2026-11-14">
+      <url type="details">https://github.com/meehl/rusty-path-of-building/releases/tag/v0.3.4</url>
       <description></description>
+    </release>
+    <release version="0.3.3" date="2026-10-23">
+      <description/>
     </release>
     <release version="0.2.18" date="2026-05-29">
       <description/>
