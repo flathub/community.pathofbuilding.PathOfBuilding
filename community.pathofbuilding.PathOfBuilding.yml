@@ -36,13 +36,13 @@ modules:
     sources:
       - type: git
         url: https://github.com/meehl/rusty-path-of-building.git
-        commit: 098c967206d03cde54172dcf37a36218589fa5e7
+        commit: 08260cabd240c7c70da8522fc22e36216e410c64
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
           version-scheme: semantic
-        tag: v0.3.3
+        tag: v0.3.4
       - cargo-sources.json
 
   - name: extrafiles
